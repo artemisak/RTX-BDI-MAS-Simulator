@@ -1,20 +1,17 @@
+import configparser
+
 import numpy as np
 
 from supplements import Result, Task
 
+config = configparser.ConfigParser()
+config.read("config.ini")
+
 
 class BaseAgent:
     id = 0
-    __surnames = ['Smith', 'Johnson',
-                  'Williams', 'Brown',
-                  'Jones', 'Garcia',
-                  'Miller', 'Davis',
-                  'Anderson', 'Taylor']
-    __first_names = ['Liam', 'Noah',
-                     'Olivia', 'Emma',
-                     'Oliver', 'Amelia',
-                     'Henry', 'Mia',
-                     'Lucas', 'Evelyn']
+    __surnames = config["NAMES"]["LAST_NAMES"].split(sep=', ')
+    __first_names = config["NAMES"]["FIRST_NAMES"].split(sep=', ')
 
     def __init__(self, role):
         self.id = BaseAgent.id
