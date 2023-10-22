@@ -1,26 +1,48 @@
 import datetime
+import time
+
 import numpy as np
 
 
 class Simulator:
+    start_time = datetime.datetime.now()
     patients = []
     physicians = []
 
-    def generate_patients(self, intensity=5, time_span=30, size=10):
-        last = self.start_time
+    @staticmethod
+    def generate_patients(intensity=5, time_span=30, size=1):
+        last = Simulator.start_time
         for latency in np.round(np.random.exponential(scale=time_span / intensity, size=size)):
             last += datetime.timedelta(minutes=latency)
             Simulator.patients.append(Patient(income_time=last))
 
-    def generate_physicians(self):
+    @staticmethod
+    def generate_physicians():
         Simulator.physicians = [Physician() for _ in range(1, 5)]
 
-    def __init__(self, start_now=True, start_date='17.10.2023 9:00'):
-        if start_now:
-            self.start_time = datetime.datetime.now()
-        else:
-            self.start_time = datetime.datetime.strptime(start_date,
-                                                         '%d.%m.%Y %H:%M')
+    def run_simulation(self):
+        self.generate_physicians()
+        i = 0
+        while i < 10:
+            self.generate_patients()
+
+            print('\n\n\n')
+            for physician in self.physicians:
+                print(physician.id, physician.role, physician.name,
+                      physician.qualification, physician.workload,
+                      [i.id for i in physician.pipeline])
+
+            for patient in self.patients:
+                print(patient.id, patient.role, patient.name, patient.physician.id, patient.task.urgency,
+                      patient.task.intricate)
+
+            i += 1
+            time.sleep(1)
+
+    def __init__(self, start_datetime=None):
+        if start_datetime:
+            Simulator.start_time = datetime.datetime.strptime(start_datetime,
+                                                              '%d.%m.%Y %H:%M')
 
 
 class Agent:
@@ -45,6 +67,9 @@ class Agent:
 
 class Intern(Agent):
 
+    def update_efficiency(self):
+        self.efficiency = self.successes / self.attempts
+
     def generate_outcome(self, hard_task):
         if hard_task:
             self.outcomes.append(Result(success_rate=self.success_rate * .8,
@@ -64,46 +89,58 @@ class Intern(Agent):
         self.successes = 0
         self.efficiency = 0.5
 
-    def update_efficiency(self):
-        self.efficiency = self.successes / self.attempts
-
 
 class Physician(Agent):
+
+    @property
+    def workload(self):
+        return len(self.__pipeline)
+
+    @property
+    def pipeline(self):
+        return self.__pipeline
+
+    @pipeline.setter
+    def pipeline(self, value):
+        self.__pipeline.append(value)
+
+    # def assign(self, value):
+    #     self.pipeline.append(value)
+    #
+    # def release(self, value):
+    #     idx = self.pipeline.index(value)
+    #     self.completed.append(self.pipeline.pop(idx))
+
+    def handler(self):
+        pass
 
     def __init__(self):
         super().__init__(role='Physician')
         self.qualification = np.random.choice(['Doctor of Medical Sciences',
                                                'Candidate of Medical Sciences',
                                                'Specialist'], p=[0.2, 0.3, 0.5])
-        self.pipeline = []
-        self.completed = []
-        self._workload = 0
-
-    @property
-    def workload(self):
-        return len(self.pipeline)
-
-    def assign(self, value):
-        self.pipeline.append(value)
-
-    def release(self, value):
-        idx = self.pipeline.index(value)
-        self.completed.append(self.pipeline.pop(idx))
+        self.__completed = []
+        self.__pipeline = []
+        self.__workload = 0
 
 
 class Patient(Agent):
+
+    @staticmethod
+    def createTask():
+        return Task()
+
+    def choosePhysician(self):
+        executor = np.random.choice(Simulator.physicians)
+        executor.pipeline = self
+        return executor
 
     def __init__(self, income_time):
         super().__init__(role='Patient')
         self.income_time = income_time
         self.resume_time = None
-        self.task = Task()
-        self.physician = None
-
-    def choose_physician(self):
-        executor = np.random.choice(Simulator.physicians)
-        self.physician = executor
-        executor.assign(value=self)
+        self.task = self.createTask()
+        self.physician = self.choosePhysician()
 
 
 class Result:
@@ -120,15 +157,4 @@ class Task:
 
 if __name__ == '__main__':
     instance = Simulator()
-    instance.generate_patients()
-    instance.generate_physicians()
-
-    for patient in instance.patients:
-        patient.choose_physician()
-        print(patient.id, patient.role, patient.name, patient.physician.id, patient.task.urgency,
-              patient.task.intricate)
-    fun = lambda x: [i.id for i in x]
-    for physician in instance.physicians:
-        print(physician.id, physician.role, physician.name,
-              physician.qualification, physician.workload,
-              fun(physician.pipeline))
+    instance.run_simulation()
