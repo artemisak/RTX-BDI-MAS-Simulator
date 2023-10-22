@@ -1,3 +1,4 @@
+import asyncio
 import configparser
 
 import numpy as np
@@ -75,15 +76,19 @@ class Physician(BaseAgent):
         return self.__pipeline
 
     @pipeline.setter
-    def pipeline(self, value):
-        self.__pipeline.append(value)
+    def pipeline(self, request):
+        self.assign(request)
+        asyncio.run(self.solve(request))
 
-    # def assign(self, value):
-    #     self.pipeline.append(value)
-    #
-    # def release(self, value):
-    #     idx = self.pipeline.index(value)
-    #     self.completed.append(self.pipeline.pop(idx))
+    async def solve(self, objective):
+        self.release(objective)
+
+    def assign(self, objective):
+        self.__pipeline.append(objective)
+
+    def release(self, objective):
+        idx = self.pipeline.index(objective)
+        self.__completed.append(self.pipeline.pop(idx))
 
     def handler(self):
         pass
