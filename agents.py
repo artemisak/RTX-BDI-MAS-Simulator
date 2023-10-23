@@ -1,4 +1,4 @@
-import asyncio
+import threading
 import configparser
 import time
 from datetime import timedelta
@@ -27,7 +27,10 @@ class Intern(BaseAgent):
 
     @property
     def efficiency(self):
-        return self.successes / self.attempts
+        if self.attempts != 0:
+            return self.successes / self.attempts
+        else:
+            return 0.5
 
     @property
     def successes(self):
@@ -66,39 +69,39 @@ class Patient(BaseAgent):
     def createTask():
         return Task()
 
-    def choosePhysician(self, available_physicians):
-        executor = np.random.choice(available_physicians)
-        executor.pipeline = self
-        return executor
+    def choosePhysician(self, pool):
+        physician = np.random.choice(pool)
+        thread = threading.Thread(target=physician.request_handler, args=(self,))
+        thread.start()
+        return physician
 
     def __init__(self, income_time, available_physicians):
         super().__init__(role='Patient')
         self.income_time = income_time
         self.resume_time = None
         self.task = self.createTask()
-        self.physician = self.choosePhysician(available_physicians)
+        self.physician = self.choosePhysician(pool=available_physicians)
 
 
 class Physician(BaseAgent):
 
     @property
     def workload(self):
-        return len(self._pipeline)
-
-    @property
-    def pipeline(self):
-        return self._pipeline
-
-    @pipeline.setter
-    def pipeline(self, request):
-        self.assign(request)
-        asyncio.create_task(self.solve(request, self.assistants))
+        return len(self.pipeline)
 
     @staticmethod
     def choose_intern(pool):
         return np.random.choice(pool)
 
-    async def solve(self, objective, assistants):
+    def request_handler(self, request):
+        self.assign(request)
+        self.solve(request, self.assistants)
+        self.release(request)
+
+    def assign(self, objective):
+        self.pipeline.append(objective)
+
+    def solve(self, objective, assistants):
         intern = self.choose_intern(assistants)
         result = 0
         latency = timedelta(minutes=0)
@@ -106,15 +109,13 @@ class Physician(BaseAgent):
             outcome = intern.generate_outcome(objective.task)
             result = outcome.result
             if result == 0:
-                latency = outcome.time + timedelta(minutes=np.random.choice(range(1, 4)))
+                latency = (timedelta(minutes=outcome.time) +
+                           timedelta(minutes=int(np.random.choice([x for x in range(1, 4)]))))
             else:
-                latency = outcome.time + timedelta(minutes=np.random.choice(range(7, 10)))
+                latency = (timedelta(minutes=outcome.time) +
+                           timedelta(minutes=int(np.random.choice([x for x in range(7, 10)]))))
         objective.resume_time = objective.income_time + latency
-        time.sleep(0.87)
-        self.release(objective)
-
-    def assign(self, objective):
-        self._pipeline.append(objective)
+        time.sleep(int(latency.total_seconds() / 600))
 
     def release(self, objective):
         idx = self.pipeline.index(objective)
@@ -127,5 +128,5 @@ class Physician(BaseAgent):
                                                'Specialist'], p=[0.2, 0.3, 0.5])
         self.assistants = assistants
         self.completed = []
-        self._pipeline = []
+        self.pipeline = []
         self._workload = 0
