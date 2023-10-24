@@ -1,2 +1,2 @@
-# RTX-BDI-MAS Similator
+# RTX-BDI-MAS Simulator
  
