@@ -1,4 +1,1 @@
-10, Physician, Luna Martin, Specialist, 0, [], [{16: 'Owen Turner'}, {20: 'Emma Murphy'}]
-11, Physician, Lucas Morals, Candidate of Medical Sciences, 1, [{21: 'Eleanor Morals'}], [{14: 'Amelia Perez'}, {18: 'Henry Roberts'}, {19: 'Olivia Edwards'}]
-12, Physician, Victoria Thompson, Candidate of Medical Sciences, 1, [{22: 'Bella Hall'}], [{17: 'Nova Diaz'}]
-13, Physician, Samuel Scott, Specialist, 1, [{23: 'Nolan Smith'}], [{15: 'Cameron Anderson'}]
+
