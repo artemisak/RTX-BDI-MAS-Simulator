@@ -11,39 +11,19 @@ export function useConnection(url) {
       const events = new EventSource(`${url}/events`);
 
       events.onmessage = (event) => {
-        const parsedData = JSON.parse(event.data);
-        let entity = parsedData;
+        const allData = JSON.parse(event.data);
+        const group = allData.group;
+        const entities = JSON.parse(allData?.data);
 
-        if (typeof parsedData === "string") {
-          entity = JSON.parse(parsedData);
-        }
-
-        console.log(entity);
-
-        switch (entity.role) {
+        switch (group) {
           case "Patient":
-            setPatientsData((prev) => {
-              if (prev.some((el) => el.id === entity.id)) {
-                return prev;
-              }
-              return [...prev, entity];
-            });
+            setPatientsData(entities);
             break;
           case "Physician":
-            setPhysiciansData((prev) => {
-              if (prev.some((el) => el.id === entity.id)) {
-                return prev;
-              }
-              return [...prev, entity];
-            });
+            setPhysiciansData(entities);
             break;
           case "Intern":
-            setInternsData((prev) => {
-              if (prev.some((el) => el.id === entity.id)) {
-                return prev;
-              }
-              return [...prev, entity];
-            });
+            setInternsData(entities);
             break;
           default:
             return;

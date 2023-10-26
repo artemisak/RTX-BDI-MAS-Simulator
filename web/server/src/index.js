@@ -27,8 +27,7 @@ app.listen(PORT, () => {
 app.get("/events", eventsHandler);
 
 app.get("/all", () => {
-  console.log("ascsjkdfvjndfkvjndfkvjdnfv");
-  readLogFile("intern.txt");
-  readLogFile("physician.txt");
-  readLogFile("patient.txt");
+  readLogFile("intern.json");
+  readLogFile("physician.json");
+  readLogFile("patient.json");
 });

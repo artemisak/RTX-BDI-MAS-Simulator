@@ -33,11 +33,11 @@ export default function PatientsTable() {
             <Tr key={el.id + i}>
               <Td>{el.id}</Td>
               <Td>{el.name}</Td>
-              <Td>{el.physicianId}</Td>
-              <Td>{el.taskUrgency}</Td>
-              <Td>{el.taskIntricate}</Td>
-              <Td>{el.incomeTime.split(".")[0]}</Td>
-              <Td>{el.resumeTime.split(".")[0]}</Td>
+              <Td>{el.physician_id}</Td>
+              <Td>{el.urgency}</Td>
+              <Td>{el.intricate}</Td>
+              <Td>{el.income_time.split(".")[0]}</Td>
+              <Td>{el.resume_time.split(".")[0]}</Td>
             </Tr>
           ))}
         </Tbody>

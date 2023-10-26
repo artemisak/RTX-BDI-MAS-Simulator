@@ -31,7 +31,6 @@ function eventsHandler(request, response, next) {
 
 function sendEventsToAll(data) {
   constants.clients.forEach((client) => {
-    console.log(data);
     return client.response.write(`data: ${JSON.stringify(data)}\n\n`);
   });
 }

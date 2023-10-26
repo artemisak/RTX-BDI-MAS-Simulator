@@ -1,4 +1,6 @@
 import {
+  ListItem,
+  OrderedList,
   Table,
   TableContainer,
   Tbody,
@@ -29,7 +31,6 @@ export default function PhysiciansTable() {
         </Thead>
         <Tbody>
           {data?.map((el, i) => {
-            console.log(el);
             // const liveQueue = JSON.parse(el.liveQueue);
             // const history = JSON.parse(el.history);
             return (
@@ -38,8 +39,32 @@ export default function PhysiciansTable() {
                 <Td>{el.name}</Td>
                 <Td>{el.qualification}</Td>
                 <Td>{el.workload}</Td>
-                <Td>{el.liveQueue.length ? el.liveQueue : "-"}</Td>
-                <Td>{el.history.length ? el.history : "-"}</Td>
+                <Td>
+                  <OrderedList>
+                    {el._pipeline.map((lineEl) => {
+                      for (let key in lineEl) {
+                        return (
+                          <ListItem key={key}>
+                            Id: {key}, Name: {lineEl[key]}
+                          </ListItem>
+                        );
+                      }
+                    })}
+                  </OrderedList>
+                </Td>
+                <Td>
+                  <OrderedList>
+                    {el.completed.map((completedEl) => {
+                      for (let key in completedEl) {
+                        return (
+                          <ListItem key={key}>
+                            Id: {key}, Name: {completedEl[key]}
+                          </ListItem>
+                        );
+                      }
+                    })}
+                  </OrderedList>
+                </Td>
               </Tr>
             );
           })}
