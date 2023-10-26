@@ -1,4 +1,0 @@
-10, Physician, Aiden Adams, Candidate of Medical Sciences, 1, [{23: 'Luna Lewis'}], [{14: 'Stella Thompson'}]
-11, Physician, Nova Carter, Candidate of Medical Sciences, 1, [{22: 'Lucas Morals'}], [{17: 'Henry Thompson'}, {16: 'Natalie Clark'}]
-12, Physician, Emilia Lewis, Specialist, 1, [{20: 'Samuel Robinson'}], [{19: 'Emma Baker'}]
-13, Physician, Luna Reyes, Specialist, 1, [{21: 'Nova Smith'}], [{15: 'Thomas Thompson'}, {18: 'Elias Garcia'}]
