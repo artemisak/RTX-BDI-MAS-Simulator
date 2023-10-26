@@ -19,13 +19,56 @@ export default function PatientsTable() {
       <Table variant="striped">
         <Thead>
           <Tr>
-            <Th isNumeric>Id</Th>
-            <Th>Name</Th>
-            <Th isNumeric>Physician id</Th>
-            <Th isNumeric>Task urgency</Th>
-            <Th isNumeric>Task intricate</Th>
-            <Th isNumeric>Income time</Th>
-            <Th isNumeric>resume time</Th>
+            <Th sx={{ textAlign: "left !important" }} isNumeric>
+              Id
+            </Th>
+            <Th
+              sx={{
+                textAlign: "left !important",
+              }}
+            >
+              Name
+            </Th>
+            <Th
+              sx={{
+                textAlign: "left !important",
+              }}
+              isNumeric
+            >
+              Physician id
+            </Th>
+            <Th
+              sx={{
+                textAlign: "left !important",
+              }}
+              isNumeric
+            >
+              Task urgency
+            </Th>
+            <Th
+              sx={{
+                textAlign: "left !important",
+              }}
+              isNumeric
+            >
+              Task intricate
+            </Th>
+            <Th
+              sx={{
+                textAlign: "left !important",
+              }}
+              isNumeric
+            >
+              Income time
+            </Th>
+            <Th
+              sx={{
+                textAlign: "left !important",
+              }}
+              isNumeric
+            >
+              resume time
+            </Th>
           </Tr>
         </Thead>
         <Tbody>

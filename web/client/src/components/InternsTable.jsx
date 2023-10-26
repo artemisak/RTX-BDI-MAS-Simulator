@@ -19,9 +19,13 @@ export default function InternsTable() {
       <Table variant="striped">
         <Thead>
           <Tr>
-            <Th isNumeric>Id</Th>
-            <Th>Name</Th>
-            <Th isNumeric>Efficiency</Th>
+            <Th sx={{ textAlign: "left !important" }} isNumeric>
+              Id
+            </Th>
+            <Th sx={{ textAlign: "left !important" }}>Name</Th>
+            <Th sx={{ textAlign: "left !important" }} isNumeric>
+              Efficiency
+            </Th>
           </Tr>
         </Thead>
         <Tbody>

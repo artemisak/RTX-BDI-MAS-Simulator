@@ -21,18 +21,18 @@ export default function PhysiciansTable() {
       <Table variant="striped">
         <Thead>
           <Tr>
-            <Th isNumeric>Id</Th>
-            <Th>Name</Th>
-            <Th>Qualification</Th>
-            <Th>Workload</Th>
-            <Th>Live queue</Th>
-            <Th>History</Th>
+            <Th sx={{ textAlign: "left !important" }} isNumeric>
+              Id
+            </Th>
+            <Th sx={{ textAlign: "left !important" }}>Name</Th>
+            <Th sx={{ textAlign: "left !important" }}>Qualification</Th>
+            <Th sx={{ textAlign: "left !important" }}>Workload</Th>
+            <Th sx={{ textAlign: "left !important" }}>Live queue</Th>
+            <Th sx={{ textAlign: "left !important" }}>History</Th>
           </Tr>
         </Thead>
         <Tbody>
           {data?.map((el, i) => {
-            // const liveQueue = JSON.parse(el.liveQueue);
-            // const history = JSON.parse(el.history);
             return (
               <Tr key={el.id + i}>
                 <Td>{el.id}</Td>
