@@ -1,4 +1,4 @@
-const { clients } = require("../shared/constants");
+const { constants } = require("../shared/constants");
 
 function eventsHandler(request, response, next) {
   const headers = {
@@ -8,7 +8,7 @@ function eventsHandler(request, response, next) {
   };
   response.writeHead(200, headers);
 
-  const data = `data: ${JSON.stringify(facts)}\n\n`;
+  const data = `data: ${JSON.stringify({})}\n\n`;
 
   response.write(data);
 
@@ -19,18 +19,21 @@ function eventsHandler(request, response, next) {
     response,
   };
 
-  clients.push(newClient);
+  constants.clients.push(newClient);
 
   request.on("close", () => {
     console.log(`${clientId} Connection closed`);
-    clients = clients.filter((client) => client.id !== clientId);
+    constants.clients = constants.clients.filter(
+      (client) => client.id !== clientId
+    );
   });
 }
 
-function sendEventsToAll(newFact) {
-  clients.forEach((client) =>
-    client.response.write(`data: ${JSON.stringify(newFact)}\n\n`)
-  );
+function sendEventsToAll(data) {
+  constants.clients.forEach((client) => {
+    console.log(data);
+    return client.response.write(`data: ${JSON.stringify(data)}\n\n`);
+  });
 }
 
 module.exports = {

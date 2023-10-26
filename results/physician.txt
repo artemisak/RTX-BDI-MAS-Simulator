@@ -1,4 +1,4 @@
-10, Physician, Cameron Parker, Specialist, 0, [], [{15: 'Ruby Clark'}, {19: 'Ruby Reyes'}]
-11, Physician, Ruby Turner, Specialist, 1, [{23: 'John Mitchell'}], [{17: 'Delilah White'}]
-12, Physician, David Smith, Specialist, 1, [{22: 'Mia Garcia'}], [{16: 'Iris Morris'}, {14: 'Aurora Allen'}]
-13, Physician, Bella Martin, Candidate of Medical Sciences, 1, [{18: 'Nolan Edwards'}], [{20: 'Victoria Thompson'}, {21: 'Jacob Taylor'}]
+10, Physician, Luna Martin, Specialist, 0, [], [{16: 'Owen Turner'}, {20: 'Emma Murphy'}]
+11, Physician, Lucas Morals, Candidate of Medical Sciences, 1, [{21: 'Eleanor Morals'}], [{14: 'Amelia Perez'}, {18: 'Henry Roberts'}, {19: 'Olivia Edwards'}]
+12, Physician, Victoria Thompson, Candidate of Medical Sciences, 1, [{22: 'Bella Hall'}], [{17: 'Nova Diaz'}]
+13, Physician, Samuel Scott, Specialist, 1, [{23: 'Nolan Smith'}], [{15: 'Cameron Anderson'}]

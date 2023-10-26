@@ -1,3 +1,5 @@
 module.exports = {
-  clients: [],
+  constants: {
+    clients: [],
+  },
 };
