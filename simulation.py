@@ -34,23 +34,18 @@ class Simulator:
         i = 0
         while i < 10:
             for latency in self.generate_patients():
-                with open('intern.txt', 'w') as file:
+                with open('results/intern.txt', 'w') as file:
                     for intern in self.interns:
                         print(f"{intern.id}, {intern.role}, {intern.name}, {intern.efficiency}\n")
                         file.write(f"{intern.id}, {intern.role}, {intern.name}, {intern.efficiency}\n")
-                        file.flush()
-                with open('physician.txt', 'w') as file1:
+                with open('results/physician.txt', 'w') as file1:
                     for physician in self.physicians:
                         print(f"{physician.id}, {physician.role}, {physician.name}, {physician.qualification}, {physician.workload}, {[{i.id: i.name} for i in physician.pipeline]}, {[{i.id: i.name} for i in physician.completed]}\n")
-                        file1.write(
-                            f"{physician.id}, {physician.role}, {physician.name}, {physician.qualification}, {physician.workload}, {[{i.id: i.name} for i in physician.pipeline]}, {[{i.id: i.name} for i in physician.completed]}\n")
-                        file1.flush()
-                with open('patient.txt', 'w') as file2:
+                        file1.write(f"{physician.id}, {physician.role}, {physician.name}, {physician.qualification}, {physician.workload}, {[{i.id: i.name} for i in physician.pipeline]}, {[{i.id: i.name} for i in physician.completed]}\n")
+                with open('results/patient.txt', 'w') as file2:
                     for patient in self.patients:
                         print(f"{patient.id}, {patient.role}, {patient.name}, {patient.physician.id}, {patient.task.urgency}, {patient.task.intricate}, {patient.income_time}, {patient.resume_time}\n")
-                        file2.write(
-                            f"{patient.id}, {patient.role}, {patient.name}, {patient.physician.id}, {patient.task.urgency}, {patient.task.intricate}, {patient.income_time}, {patient.resume_time}\n")
-                        file2.flush()
+                        file2.write(f"{patient.id}, {patient.role}, {patient.name}, {patient.physician.id}, {patient.task.urgency}, {patient.task.intricate}, {patient.income_time}, {patient.resume_time}\n")
                 i += 1
                 if len(Simulator.patients) > 1:
                     time.sleep(latency / 10)
