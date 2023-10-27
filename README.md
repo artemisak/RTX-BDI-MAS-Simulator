@@ -31,3 +31,9 @@ The interns table reflects only the visible and measurable attributes of this ty
 <p align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Interns_table.png"/>
 </p>
+
+The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic directed graph is presented below.  The loss function we aim to minimize is the product of the average waiting time in the queue and the sufficiency of the medical decision, which is defined inversely by the physician's qualification (3 - insufficient, 2 - more than sufficient, 1 - sufficient). Thus, we aim to minimize the average waiting time using the minimum necessary and sufficient physician qualifications.
+
+<p align="center">
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/asyclic_oriented_graph.png"/>
+</p>
