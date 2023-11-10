@@ -1,7 +1,5 @@
 <div align="center">
-  
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Logo.svg"/>
-  
 </div>
 
 <div align="center">
@@ -11,6 +9,7 @@
 [![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=%white)](https://scipy.org/)
 
 </div>
+
 <div align="center">
   
   [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -19,6 +18,15 @@
 </div>
 
 <h1>Install</h1>
+
+The following set of dependencies will need to be installed for the simulation to work:
+
+```
+sudo apt update
+sudo apt install nodejs npm python3
+```
+
+
 
 <h1>Usage</h1>
 
