@@ -17,7 +17,7 @@
   
 </div>
 
-<h1>Install</h1>
+<h1>Installation</h1>
 
 The following set of dependencies will need to be installed for the simulation to work:
 
@@ -26,15 +26,30 @@ sudo apt update
 sudo apt install nodejs npm python3
 ```
 
+Then navigate to the ```web/client``` and ```web/server``` folders to install the dependencies from ```package.json``` necessary to run the web application that outputs the simulation results as tables. Skip this step if visualization is not required.
 
+Once in the desired directory, you can use the following command:
+
+```
+npm install
+```
+
+In addition, you will need to install program modules to run the simulation code directly:
+
+```
+python -m pip install numpy scipy
+```
 
 <h1>Usage</h1>
+
+
 
 <h1>Documentation</h1>
 
 Read the detailed documentation of how the simulation program code works [here](https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/DOCUMENTATION.md).
  
 <h1>Theoretical basis</h1>
+
 The general structure of the modelling process is outlined below. We use an exponential distribution with a scale of 1/lambda to generate the time between occurring events. An event is the appearance of a patient, which is characterised by several parameters: the time of the request appearance, the time of service provision, the task assigned and the selected doctor. From the point of view of RTX-BDI-MAS, patients act as agents, because by choosing a doctor from the list of available ones, they assign a task, i.e. they participate in the management of clinic resources. The best way to modify the policy of user behavior as agents is to study user behavior on the site and optimize search results (for example, a list of doctors) according to the degree of compliance of the qualification and the area of the stated task.
 
 A task is a certain MRI image to be decoded. The task, like the patient, is a named entity and has the following parameters: urgency and complexity. Urgency can take values from 1 to 3, where 1 is an urgent task (hospitalisation, severe condition), 2 is a task of medium urgency (the patient is conscious, injuries of no more than medium severity), 3 is the lowest priority (regular examinations, monitoring, minor injuries). Complexity is evaluated by a binary variable, either the task requires the highest qualification of a specialist or it does not. Complexity is a linear combination of technical complexity in image processing and urgency of the task. Thus, even tasks with the lowest priority can be considered as complex if they require more than usual processing time. The decision and complexity of the problem can be taken by a feed forward propagation neural network. For simulation purposes, its work is replaced by a random number generator. But in real RTX-BDI-MAS work, pre-scanning an image to assign it to one of two complexity categories has the potential to facilitate informed decision making in the process of matching available resources and agents in the clinic network.
