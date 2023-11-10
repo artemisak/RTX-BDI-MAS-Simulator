@@ -1,14 +1,21 @@
-<h1>Documentation</h1>
+<p align="center">
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Documentation-logo.svg"/>
+</p>
+
+<h1>Table of contents</h1>
 
   - [Agents](#agents)
     - [Base class](#base-class)
+    - [Patient](#patient)
+    - [Physician](#physician)
+    - [Intern](#intern)
   
- # Agents
+<h1>Agents</h2>
 
- ## Base class
+<h2>Base class</h3>
 
- ## Patient
+<h2>Patient</h3>
 
- ## Physician
+<h2>Physician</h3>
 
- ## Intern
+<h2>Intern</h3>
