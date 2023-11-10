@@ -1,4 +1,6 @@
-# RTX-BDI-MAS Simulator
+<p align="center">
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Logo.svg"/>
+</p>
 
 The general structure of the modelling process is outlined below. We use an exponential distribution with a scale of 1/lambda to generate the time between occurring events. An event is the appearance of a patient, which is characterised by several parameters: the time of the request appearance, the time of service provision, the task assigned and the selected doctor. From the point of view of RTX-BDI-MAS, patients act as agents, because by choosing a doctor from the list of available ones, they assign a task, i.e. they participate in the management of clinic resources. The best way to modify the policy of user behavior as agents is to study user behavior on the site and optimize search results (for example, a list of doctors) according to the degree of compliance of the qualification and the area of the stated task.
 
