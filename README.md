@@ -1,10 +1,22 @@
-<p align="center">
+<div align="center">
+  
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Logo.svg"/>
-</p>
+  
+</div>
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
-![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=%white)
+<div align="center">
+  
+[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org/)
+[![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=whit)](https://numpy.org/)
+[![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=%white)](https://scipy.org/)
+
+</div>
+<div align="center">
+  
+  [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+  [![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+  
+</div>
 
 <h1>Install</h1>
 
@@ -19,9 +31,9 @@ The general structure of the modelling process is outlined below. We use an expo
 
 A task is a certain MRI image to be decoded. The task, like the patient, is a named entity and has the following parameters: urgency and complexity. Urgency can take values from 1 to 3, where 1 is an urgent task (hospitalisation, severe condition), 2 is a task of medium urgency (the patient is conscious, injuries of no more than medium severity), 3 is the lowest priority (regular examinations, monitoring, minor injuries). Complexity is evaluated by a binary variable, either the task requires the highest qualification of a specialist or it does not. Complexity is a linear combination of technical complexity in image processing and urgency of the task. Thus, even tasks with the lowest priority can be considered as complex if they require more than usual processing time. The decision and complexity of the problem can be taken by a feed forward propagation neural network. For simulation purposes, its work is replaced by a random number generator. But in real RTX-BDI-MAS work, pre-scanning an image to assign it to one of two complexity categories has the potential to facilitate informed decision making in the process of matching available resources and agents in the clinic network.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/simulation-graph.svg"/>
-</p>
+</div>
 
 It is worth mentioning that the available specialists are both agents and the main human resource of the clinic. Physicians are the specialists whose job it is to decipher the MRI image. They are assisted by interns who mark up the images. First of all, a doctor is characterised by his/her qualification, which can be assessed on a scale from 1 to 3, where 1 is a Doctor of Medical Sciences, 2 is a Candidate of Medical Sciences, and 3 is a specialist. During the simulation, the same doctor may receive several requests, similar to a live queue. The length of this queue is called the workload. From the point of view of RTX-BDI-MAS, this parameter can be used to predict the approximate waiting time before the start of a new task. And, consequently, optimisation of workload will reduce the average waiting time for the execution of a request in the network.
 
@@ -31,21 +43,21 @@ Below are screenshots of the results of running the simulation. A tiny web appli
 
 The patient table contains the information necessary to identify the user and his/her task, also the time interval of the patient's stay in the state of waiting for the doctor's decision.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Patients_table.png"/>
-</p>
+</div>
 
 The table of doctors contains information about the state in which the doctor is at the moment of the last iteration of the simulator operation. It reflects the current workload, the list of patients waiting for a decision and the history of visits of this doctor.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Physicians_table.png"/>
-</p>
+</div>
 
 The interns table reflects only the visible and measurable attributes of this type of agent. Implicit attributes, remain hidden.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Interns_table.png"/>
-</p>
+</div>
 
 The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic directed graph is presented below.  The loss function we aim to minimize is the product of the average waiting time in the queue and the sufficiency of the medical decision, which is defined inversely by the physician's qualification (3 - insufficient, 2 - more than sufficient, 1 - sufficient). Thus, we aim to minimize the average waiting time using the minimum necessary and sufficient physician qualifications.
 
