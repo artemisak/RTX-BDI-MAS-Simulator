@@ -87,3 +87,5 @@ The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic di
 <p align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/acyclic_oriented_graph.svg"/>
 </p>
+
+[![HitCount](https://hits.dwyl.com/artemisak/RTX-BDI-MAS-Simulator.svg?style=flat)](http://hits.dwyl.com/artemisak/RTX-BDI-MAS-Simulator)
