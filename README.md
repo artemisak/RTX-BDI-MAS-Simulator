@@ -1,3 +1,6 @@
+<br>
+<br>
+
 <div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Logo_alt.svg" width="60%" height="60%">
 </div>
