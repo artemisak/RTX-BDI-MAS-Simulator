@@ -42,7 +42,28 @@ python -m pip install numpy scipy
 
 <h1>Usage</h1>
 
+To run the simulation, you must first start the web application in developer mode. To do this, go to the ```web/client``` directory and start the server responsible for the frontend.
 
+```
+npm run dev
+```
+
+The frontend of the app will be available at ```http://localhost:3000/```.
+
+The application backend is launched using a similar command from the ```web/server``` directory.
+
+```
+npm run start
+```
+
+Note that when you start the server, the ```nodemon``` startup notification appears.
+This means that a process has been started to track changes to the ```/Results directory```. The ```/Results``` directory contains several JSON files that are populated with the simulator results. Beckend uses Server-Send-Events (SSE) technology to track changes to ```/Results``` and reflect them to the frontend in a timely manner.
+
+To run the simulation process that populates the JSON files, go to the root directory and run the ```/main.py``` file.
+
+```
+python main.py
+```
 
 <h1>Documentation</h1>
 
