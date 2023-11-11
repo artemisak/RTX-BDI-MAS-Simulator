@@ -82,6 +82,8 @@ It is important that the argument of the ```physician.request_handler()``` funct
 thread = threading.Thread(target=physician.request_handler, args=(self,))
 ```
 
+Last, consider the ```resume_time``` field. The field is declared and initialized with a None value. The field is populated after ```physician.request_handler()``` is successfully executed.
+
 <h2>Physician</h3>
 
 <h2>Intern</h3>
