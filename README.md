@@ -65,6 +65,12 @@ To run the simulation process that populates the JSON files, go to the root dire
 python main.py
 ```
 
+Once these steps are completed, the simulation will start running and the results will be dynamically reflected at ```http://localhost:3000/```.
+
+<h1>Caution</h1>
+
+For best experience, make sure JSON files are created and empty. Also, after stopping the simulation and closing the application, make sure in the task manager that all running Node JS processes are actually stopped. There have been cases where ```nodemon``` continues to execute its process despite the main process being terminated. If this happens, the next time you run the application you will get an error stating that the ```nodemon``` process is already running.
+
 <h1>Documentation</h1>
 
 Read the detailed documentation of how the simulation program code works [here](https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/DOCUMENTATION.md).
