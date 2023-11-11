@@ -39,8 +39,9 @@ The BaseAgent initializer contains a ```role``` variable, which is then assigned
 
 <h2>Patient</h3>
 
-```python
+The ```Patient``` сlass reflects a person, with some hidden set of physiological parameters, implicitly expressed by the ```Task``` he or she sets for the doctor to investigate.
 
+```python
 class Patient(BaseAgent):
 
     @staticmethod
@@ -59,7 +60,26 @@ class Patient(BaseAgent):
         self.resume_time = None
         self.task = self.createTask()
         self.physician = self.choosePhysician(pool=available_physicians)
+```
 
+Once we note that before declaring and initializing with some values the fields of the ```BaseAgent``` descendant class, it is necessary to initialize the parent class, assigning the agent the appropriate role, in this case the role of 'Patient'.
+
+```python
+super().__init__(role='Patient')
+```
+
+Subsequently, this step will be repeated when initializing the ```Physician``` and ```Intern``` classes.
+
+The patient initializer takes two variables as input: the time the request was received, expressed by the ```income_time``` variable, and the pool of radiology physicians available for selection in the ```available_physicians``` variable. 
+
+The ```task``` field is initialized by an instance of the ```Task``` class. To get the corresponding instance, you need to call the ```CreateTask()``` method. It is assumed that the real life task can be obtained using more complex logic, including using GAN tools to generate the most rare and missing samples of the ```Task``` class.
+
+The ```physician``` field is filled in according to the results of the ```choosePhysician()``` function. This method randomly returns a physician from the list of available physicians and starts a separate subprocess to perform the received objective using the methods of the built-in library ```threading```.
+
+It is important that the argument of the ```physician.request_handler()``` function is directly an instance of the ```Patient``` class, which is reflected in this line.
+
+```python
+thread = threading.Thread(target=physician.request_handler, args=(self,))
 ```
 
 <h2>Physician</h3>
