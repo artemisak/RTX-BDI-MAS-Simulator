@@ -1,6 +1,6 @@
 <div align="center">
   
-  ![Doc-logo](https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Doc-logo.svg)
+![Doc-logo](https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Doc-logo.svg)
   
 </div>
 
