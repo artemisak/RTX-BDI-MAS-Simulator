@@ -86,26 +86,28 @@ Interns are aspiring doctors who have received proper education, but have not co
 
 Below are screenshots of the results of running the simulation. A tiny web application with Server-Sent Events (SSE) support was developed for this purpose. In addition to tables, the application logs the process as the simulation progresses and outputs intermediate changes to the terminal.
 
-The patient table contains the information necessary to identify the user and his/her task, also the time interval of the patient's stay in the state of waiting for the doctor's decision.
+The interns table reflects only the visible and measurable attributes of this type of agent. Implicit attributes, remain hidden.
 
 <div align="center">
-  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Patients_table.svg"/>
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Interns_efficiency_table.svg"/>
 </div>
 
-The table of doctors contains information about the state in which the doctor is at the moment of the last iteration of the simulator operation. It reflects the current workload, the list of patients waiting for a decision and the history of visits of this doctor.
+The table of doctors contains information about the state in which the doctor is at the moment of the last iteration of the simulator operation.
 
 <div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Physicians_table_1.svg"/>
 </div>
 
+It reflects the current workload, the list of patients waiting for a decision and the history of visits of this doctor.
+
 <div align="center">
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Physicians_table_2.svg"/>
 </div>
 
-The interns table reflects only the visible and measurable attributes of this type of agent. Implicit attributes, remain hidden.
+The patient table contains the information necessary to identify the user and his/her task, also the time interval of the patient's stay in the state of waiting for the doctor's decision.
 
 <div align="center">
-  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Interns_efficiency_table.svg"/>
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Patients_table.svg"/>
 </div>
 
 The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic directed graph is presented below.  The loss function we aim to minimize is the product of the average waiting time in the queue and the sufficiency of the medical decision, which is defined inversely by the physician's qualification (3 - insufficient, 2 - more than sufficient, 1 - sufficient). Thus, we aim to minimize the average waiting time using the minimum necessary and sufficient physician qualifications.
