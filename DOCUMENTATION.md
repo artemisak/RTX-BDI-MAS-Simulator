@@ -51,7 +51,7 @@ The BaseAgent initializer contains a ```role``` variable, which is then assigned
 
 | Method | Input | Output |
 |-------|------|------|
-|```init```|```role``` : ```String```|```BaseAgent```|
+|```init()```|```role``` : ```String```|```BaseAgent```|
 
 <h2>Patient</h3>
 
@@ -120,7 +120,7 @@ Last, consider the ```resume_time``` field. The field is declared and initialize
   </thead>
   <tbody>
     <tr>
-      <td rowspan=2><code>init</code></td>
+      <td rowspan=2><code>init()</code></td>
       <td><code>incometime</code> : <code>datetime</code></td>
       <td rowspan=2><code>Patient</code></td>
     </tr>
@@ -227,7 +227,7 @@ The computational field ```workload``` reflects the length of the working ```pip
   <tbody>
     <tr>
       <td>
-        <code>init</code>
+        <code>init()</code>
       </td>
       <td>
         <code>assistants</code> : <code>[Intern]</code>
