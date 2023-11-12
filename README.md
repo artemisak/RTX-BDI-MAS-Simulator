@@ -4,13 +4,14 @@
 
 </div>
 
+
 <h1>Table of contents<h1>
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Caution](#caution)
-- [Documentation](#documentation)
-- [Theoretical basis](#theoretical-basis)
+ - [Installation](#installation)
+ - [Usage](#usage)
+ - [Caution](#caution)
+ - [Documentation](#documentation)
+ - [Theoretical basis](#theoretical-basis)
 
 <h1>Installation</h1>
 
