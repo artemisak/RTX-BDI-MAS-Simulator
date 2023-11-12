@@ -2,8 +2,6 @@
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Logo.svg">
 </div>
 
-<br>
-
 <div>
   
 [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org/)
