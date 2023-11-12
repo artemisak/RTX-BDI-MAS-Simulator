@@ -416,9 +416,9 @@ class Task:
         self.intricate = np.random.choice([True, False], p=[0.3, 0.7])
 ```
 
-It possesses two fields:
+The ```Task``` class contains two fields:
 - ```Urgency``` - field describes urgency on a scale from 1 to 3, where 1 is an urgent task (hospitalisation, severe condition), 2 is a task of medium urgency (the patient is conscious, injuries of no more than medium severity), 3 is the lowest priority (regular examinations, monitoring, minor injuries);
-- ```Intricacy``` - binary variable, either the task requires the highest qualification of a specialist or it does not.
+- ```Intricacy``` - binary variable, either the task requires the highest qualification (1) of a specialist or it does not (0).
 
 <h2>Result</h2>
 
@@ -432,7 +432,7 @@ class Result:
 ```
 
 The ```Result``` class contains two fields:
-- ```result``` - binary variable, either 0 is unsatisfactory, or 1 is satisfactory;
+- ```result``` - binary variable, either is unsatisfactory (0), or is satisfactory (1);
 - ```time``` - number of minutes spent on the task.
 Note that here and everywhere time is estimated in minutes, however, for real-time simulation, a value in minutes divided by 10 is used.
 
