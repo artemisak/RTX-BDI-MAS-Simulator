@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Documentation-logo.svg"/>
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Doc-logo.svg"/>
 </p>
 
 <h1>Table of contents</h1>
