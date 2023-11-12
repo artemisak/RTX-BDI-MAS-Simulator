@@ -206,4 +206,97 @@ When a patient's request is received, the ```request_handler()``` method starts 
 
 The computational field ```workload``` reflects the length of the working ```pipeline``` at the current time. The property can be called at any time to document the state of the agent.
 
+<h3>Field Types</h3>
+
+| Field | Type |
+|-------|------|
+|```qualification```|```String```|
+|```assistants```|```[Intern]```|
+|```completed```|```[Patient]```|
+|```pipeline```|```[Patitent]```|
+|```workload```|```Int```|
+
+<h3>Method Types</h3>
+
+<table>
+  <thead>
+    <th>Method</th>
+    <th>Input</th>
+    <th>Output</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>init</code>
+      </td>
+      <td>
+        <code>assistants</code> : <code>[Intern]</code>
+      </td>
+      <td>
+        <code>Physician</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>choose_intern()</code>
+      </td>
+      <td>
+        <code>pool</code> : <code>[Intern]</code>
+      </td>
+      <td>
+        <code>Intern</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>request_handler()</code>
+      </td>
+      <td>
+        <code>request</code> : <code>Patient</code>
+      </td>
+      <td align="center">
+        -
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>assign()</code>
+      </td>
+      <td>
+        <code>objective</code> : <code>Patient</code>
+      </td>
+      <td align="center">
+        -
+      </td>
+    </tr>
+    <tr>
+      <td rowspan=2>
+        <code>solve()</code>
+      </td>
+      <td>
+        <code>objective</code> : <code>Patient</code>
+      </td>
+      <td rowspan=2 align="center">
+        -
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <code>assistants</code> : <code>[Intern]</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>release()</code>
+      </td>
+      <td>
+        <code>objective</code> : <code>Patient</code>
+      </td>
+      <td align="center">
+        -
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>Intern</h3>
