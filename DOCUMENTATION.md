@@ -16,11 +16,11 @@
     - [Result](#result)
   - [Simulator](#simulator)
   
-<h1>Agents</h2>
+<h1>Agents</h1>
 
 The Agents file contains the classes of all agents involved in the clinic's life process. 
 
-<h2>Base class</h3>
+<h2>Base class</h2>
 
 First of all, let's consider the ```BaseAgent``` abstract class, which is the base class for all other classes.
 
@@ -59,7 +59,7 @@ The BaseAgent initializer contains a ```role``` variable, which is then assigned
 |-------|------|------|
 |```init()```|```role``` : ```String```|```BaseAgent```|
 
-<h2>Patient</h3>
+<h2>Patient</h2>
 
 The ```Patient``` сlass reflects a person, with some hidden set of physiological parameters, implicitly expressed by the ```Task``` he or she sets for the doctor to investigate.
 
@@ -146,7 +146,7 @@ Last, consider the ```resume_time``` field. The field is declared and initialize
   </tbody>
 </table>
 
-<h2>Physician</h3>
+<h2>Physician</h2>
 
 The ```Physician``` class describes the basic properties of a radiologist in the agent chain of a multi-agent system.
 
@@ -303,7 +303,7 @@ The computational field ```workload``` reflects the length of the working ```pip
   </tbody>
 </table>
 
-<h2>Intern</h3>
+<h2>Intern</h2>
 
 Instances of the ```Intern``` class are involved in marking up MRI images for the physician. They are the lowest level of the agent hierarchy, as they cannot manage either patient flow or therapist activity.
 
