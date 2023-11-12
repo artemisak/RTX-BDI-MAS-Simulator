@@ -443,9 +443,44 @@ The ```Result``` class contains two fields:
 - ```time``` - number of minutes spent on the task.
 Note that here and everywhere time is estimated in minutes, however, for real-time simulation, a value in minutes divided by 10 is used.
 
+<h3>Field Types</h3>
+
 | Field | Type |
 |-------|------|
 |```result```|```Int```|
 |```time```|```Double```|
+
+<h3>Method Types</h3>
+
+<table>
+  <thead>
+    <th>Method</th>
+    <th>Input</th>
+    <th>Output</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan=3>
+        <code>init()</code>
+      </td>
+      <td>
+        <code>success_rate</code> : <code>Double</code>
+      </td>
+      <td rowspan=3>
+        <code>Result</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>mean_time</code> : <code>Int</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>std</code> : <code>Double</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <h1>Simulator</h1>
