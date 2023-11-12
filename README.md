@@ -4,6 +4,14 @@
 
 </div>
 
+<h1>Table of contents<h1>
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Caution](#caution)
+- [Documentation](#documentation)
+- [Theoretical basis](#theoretical-basis)
+
 <h1>Installation</h1>
 
 The following set of dependencies will need to be installed for the simulation to work:
