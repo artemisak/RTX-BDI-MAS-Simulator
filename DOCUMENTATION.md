@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Doc-logo.svg"/>
+  
+  ![Doc-logo](https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Doc-logo.svg)
+  
 </div>
 
 <h1>Table of contents</h1>
