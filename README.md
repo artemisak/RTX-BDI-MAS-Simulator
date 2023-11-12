@@ -93,7 +93,7 @@ Below are screenshots of the results of running the simulation. A tiny web appli
 The patient table contains the information necessary to identify the user and his/her task, also the time interval of the patient's stay in the state of waiting for the doctor's decision.
 
 <div align="center">
-  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Patients_table.png"/>
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Patients_table.svg"/>
 </div>
 
 The table of doctors contains information about the state in which the doctor is at the moment of the last iteration of the simulator operation. It reflects the current workload, the list of patients waiting for a decision and the history of visits of this doctor.
