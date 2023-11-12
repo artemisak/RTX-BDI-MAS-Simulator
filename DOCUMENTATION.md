@@ -300,3 +300,55 @@ The computational field ```workload``` reflects the length of the working ```pip
 </table>
 
 <h2>Intern</h3>
+
+Instances of the ```Intern``` class are involved in marking up MRI images for the physician. They are the lowest level of the agent hierarchy, as they cannot manage either patient flow or therapist activity.
+
+```python
+class Intern(BaseAgent):
+
+    @property
+    def efficiency(self):
+        if self.attempts != 0:
+            return self.successes / self.attempts
+        else:
+            return 0.5
+
+    @property
+    def successes(self):
+        return len([x for x in self.outcomes if x.result == 1])
+
+    @property
+    def attempts(self):
+        return len(self.outcomes)
+
+    def generate_outcome(self, task):
+        if task.intricate:
+            result = Result(success_rate=self.success_rate * .8,
+                            mean_time=self.mean_time * 2, std=self.deviation)
+            self.outcomes.append(result)
+            return result
+        else:
+            result = Result(success_rate=self.success_rate,
+                            mean_time=self.mean_time, std=self.deviation)
+            self.outcomes.append(result)
+            return result
+
+    def __init__(self):
+        super().__init__(role='Intern')
+        self.success_rate = np.random.choice([x / 10 for x in range(6, 10, 1)], p=[0.2, 0.3, 0.3, 0.2])
+        self.mean_time = np.random.choice(range(8, 14, 2))
+        self.deviation = np.random.choice([x / 10 for x in range(5, 20, 5)])
+        self.outcomes = []
+        self._attempts = 0
+        self._successes = 0
+        self._efficiency = 0.5
+```
+
+Instances of the ```Physician``` class use the ```generate_outcome(self, task)``` method of the assisting instances of the ```Intern``` class to produce a simulation of the result of MRI image markup. The result can be either satisfactory, in which case the doctor spends some extra time analyzing the image, or unsatisfactory, in which case the doctor still spends some time analyzing the image and then sends the job for redoing. The intern's work is not considered complete until a senior physician accepts it (hierarchical criterion).
+
+The ```Intern``` class has several computational properties:
+ - ```efficiency``` returns the absolute efficiency of the intern;
+ - ```successes``` returns the number of tasks successfully solved by the intern;
+ - ```attempts``` - returns the number of all attempts made.
+
+Knowing successes and attempts one can calculate the relative efficiency of the intern in narrow profile tasks, such as abdominal or musculoskeletal radiology.
