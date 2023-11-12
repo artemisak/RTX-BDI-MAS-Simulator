@@ -417,8 +417,15 @@ class Task:
 ```
 
 The ```Task``` class contains two fields:
-- ```Urgency``` - field describes urgency on a scale from 1 to 3, where 1 is an urgent task (hospitalisation, severe condition), 2 is a task of medium urgency (the patient is conscious, injuries of no more than medium severity), 3 is the lowest priority (regular examinations, monitoring, minor injuries);
-- ```Intricacy``` - binary variable, either the task requires the highest qualification (1) of a specialist or it does not (0).
+- ```urgency``` - field describes urgency on a scale from 1 to 3, where 1 is an urgent task (hospitalisation, severe condition), 2 is a task of medium urgency (the patient is conscious, injuries of no more than medium severity), 3 is the lowest priority (regular examinations, monitoring, minor injuries);
+- ```intricacy``` - binary variable, either the task requires the highest qualification (1) of a specialist or it does not (0).
+
+<h3>Field Types</h3>
+
+| Field | Type |
+|-------|------|
+|```urgency```|```Int```|
+|```intricate```|```Int```|
 
 <h2>Result</h2>
 
@@ -435,5 +442,10 @@ The ```Result``` class contains two fields:
 - ```result``` - binary variable, either is unsatisfactory (0), or is satisfactory (1);
 - ```time``` - number of minutes spent on the task.
 Note that here and everywhere time is estimated in minutes, however, for real-time simulation, a value in minutes divided by 10 is used.
+
+| Field | Type |
+|-------|------|
+|```result```|```Int```|
+|```time```|```Double```|
 
 <h1>Simulator</h1>
