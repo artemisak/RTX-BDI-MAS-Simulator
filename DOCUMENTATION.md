@@ -37,6 +37,22 @@ In addition, ```BaseAgent``` contains two more static fields ```_surnames``` and
 
 The BaseAgent initializer contains a ```role``` variable, which is then assigned to a field of the same name. The ```role`` is what defines the conduct of the agent in the simulator logic. Roles are of 3 types: patient, physician, and intern.
 
+<h3>Field Types</h3>
+
+| Field | Type |
+|-------|------|
+|```id```|```Int```|
+|```role```|```String```|
+|```_surnames```|```[String]```|
+|```_first_names```|```[String]```|
+|```name```|```String```|
+
+<h3>Method Types</h3>
+
+| Method | Input | Output |
+|-------|------|------|
+|```init```|```role``` : ```String```|```BaseAgent```|
+
 <h2>Patient</h3>
 
 The ```Patient``` сlass reflects a person, with some hidden set of physiological parameters, implicitly expressed by the ```Task``` he or she sets for the doctor to investigate.
@@ -83,6 +99,46 @@ thread = threading.Thread(target=physician.request_handler, args=(self,))
 ```
 
 Last, consider the ```resume_time``` field. The field is declared and initialized with a None value. The field is populated after ```physician.request_handler()``` is successfully executed.
+
+<h3>Field Types</h3>
+
+| Field | Type |
+|-------|------|
+|```income_time```|```datetime```|
+|```resime_time```|```None``` / ```datetime```|
+|```task```|```Task```|
+|```physician```|```Physician```|
+
+
+<h3>Method Types</h3>
+
+<table>
+  <thead>
+    <th>Method</th>
+    <th>Input</th>
+    <th>Output</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan=2><code>init</code></td>
+      <td><code>incometime</code> : <code>datetime</code></td>
+      <td rowspan=2><code>Patient</code></td>
+    </tr>
+    <tr>
+        <td><code>available_physicians</code> : <code>[Physician]</code></td>
+    </tr>
+    <tr>
+      <td><code>createTask()</code></td>
+      <td align="center">-</td>
+      <td><code>Task</code></td>
+    </tr>
+    <tr>
+      <td><code>choosePhysician()</code></td>
+      <td><code>pool</code> : <code>[Physician]</code></td>
+      <td><code>Physician</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Physician</h3>
 
