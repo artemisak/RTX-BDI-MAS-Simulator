@@ -60,7 +60,7 @@ To run the simulation process that populates the JSON files, go to the root dire
 python main.py
 ```
 
-Once these steps are completed, the simulation will start running and the results will be dynamically reflected at ```http://localhost:3000/```.
+Once these steps are completed, the simulation will start running and the results will be dynamically reflected at ```http://localhost:3000/```. We also encourage you to go to the MRI image reading and editing tool we have developed: https://mcp.itmo.ru/ so that you have a complete picture of the patient care process.
 
 <h1>Caution</h1>
 
