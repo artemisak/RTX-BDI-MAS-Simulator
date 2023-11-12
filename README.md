@@ -108,7 +108,7 @@ The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic di
   <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Acyclic_oriented_graph.svg"/>
 </p>
 
-<div>
+<div align="center">
   
 [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org/)
 [![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=whit)](https://numpy.org/)
