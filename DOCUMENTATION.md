@@ -142,4 +142,68 @@ Last, consider the ```resume_time``` field. The field is declared and initialize
 
 <h2>Physician</h3>
 
+The ```Physician``` class describes the basic properties of a radiologist in the agent chain of a multi-agent system.
+
+```python
+class Physician(BaseAgent):
+
+    @property
+    def workload(self):
+        return len(self.pipeline)
+
+    @staticmethod
+    def choose_intern(pool):
+        return np.random.choice(pool)
+
+    def request_handler(self, request):
+        self.assign(request)
+        self.solve(request, self.assistants)
+        self.release(request)
+
+    def assign(self, objective):
+        self.pipeline.append(objective)
+
+    def solve(self, objective, assistants):
+        intern = self.choose_intern(assistants)
+        result = 0
+        latency = timedelta(minutes=0)
+        while result == 0:
+            outcome = intern.generate_outcome(objective.task)
+            result = outcome.result
+            if result == 0:
+                latency = (timedelta(minutes=outcome.time) +
+                           timedelta(minutes=int(np.random.choice([x for x in range(1, 4)]))))
+            else:
+                latency = (timedelta(minutes=outcome.time) +
+                           timedelta(minutes=int(np.random.choice([x for x in range(7, 10)]))))
+        objective.resume_time = objective.income_time + latency
+        time.sleep(int(latency.total_seconds() / 600))
+
+    def release(self, objective):
+        idx = self.pipeline.index(objective)
+        self.completed.append(self.pipeline.pop(idx))
+
+    def __init__(self, assistants):
+        super().__init__(role='Physician')
+        self.qualification = np.random.choice(['Doctor of Medical Sciences',
+                                               'Candidate of Medical Sciences',
+                                               'Specialist'], p=[0.2, 0.3, 0.5])
+        self.assistants = assistants
+        self.completed = []
+        self.pipeline = []
+        self._workload = 0
+```
+
+Each radiologist has inherent properties: the degree of medical training, expressed by the variable ```qualification```, and the set of residents with whom he cooperates, expressed by the variable ```assistants```.
+
+When a patient's request is received, the ```request_handler()``` method starts executing, which includes three steps:
+
+ - ```assign()``` - adding the patient to the ```pipeline```;
+
+ - ```solve()``` - reading the MRI image, making a diagnosis and prescribing therapy, in this case, one of the available interns is selected for MRI image markup using the web-based image markup platform developed by us;
+
+ - ```release()``` - extracting the patient from the current ```pipeline``` and adding it to the solved cases expressed by the ``completed`` variable.
+
+The computational field ```workload``` reflects the length of the working ```pipeline``` at the current time. The property can be called at any time to document the state of the agent.
+
 <h2>Intern</h3>
