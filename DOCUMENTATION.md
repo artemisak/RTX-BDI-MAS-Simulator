@@ -9,6 +9,10 @@
     - [Patient](#patient)
     - [Physician](#physician)
     - [Intern](#intern)
+  - [Supplements](#supplements)
+    - [Task](#task)
+    - [Result](#result)
+  - [Simulator](#simulator)
   
 <h1>Agents</h2>
 
@@ -199,9 +203,7 @@ Each radiologist has inherent properties: the degree of medical training, expres
 When a patient's request is received, the ```request_handler()``` method starts executing, which includes three steps:
 
  - ```assign()``` - adding the patient to the ```pipeline```;
-
  - ```solve()``` - reading the MRI image, making a diagnosis and prescribing therapy, in this case, one of the available interns is selected for MRI image markup using the web-based image markup platform developed by us;
-
  - ```release()``` - extracting the patient from the current ```pipeline``` and adding it to the solved cases expressed by the ``completed`` variable.
 
 The computational field ```workload``` reflects the length of the working ```pipeline``` at the current time. The property can be called at any time to document the state of the agent.
@@ -401,4 +403,37 @@ In addition to explicitly defined attributes, each intern is characterized by a 
   </tbody>
 </table>
 
+<h1>Supplements</h1>
 
+<h2>Task</h2>
+
+The ```Task``` class describes the clinical case of a patient.
+
+```python
+class Task:
+    def __init__(self):
+        self.urgency = np.random.choice([1, 2, 3], p=[0.6, 0.3, 0.1])
+        self.intricate = np.random.choice([True, False], p=[0.3, 0.7])
+```
+
+It possesses two fields:
+- ```Urgency``` - field describes urgency on a scale from 1 to 3, where 1 is an urgent task (hospitalisation, severe condition), 2 is a task of medium urgency (the patient is conscious, injuries of no more than medium severity), 3 is the lowest priority (regular examinations, monitoring, minor injuries);
+- ```Intricacy``` - binary variable, either the task requires the highest qualification of a specialist or it does not.
+
+<h2>Result</h2>
+
+The ```Result``` class describes the degree of success of the task performed by the intern to mark up the snapshot.
+
+```python
+class Result:
+    def __init__(self, success_rate, mean_time, std):
+        self.result = np.random.choice([0, 1], p=[1 - success_rate, success_rate])
+        self.time = np.random.normal(mean_time, std)
+```
+
+The ```Result``` class contains two fields:
+- ```result``` - binary variable, either 0 is unsatisfactory, or 1 is satisfactory;
+- ```time``` - number of minutes spent on the task.
+Note that here and everywhere time is estimated in minutes, however, for real-time simulation, a value in minutes divided by 10 is used.
+
+<h1>Simulator</h1>
