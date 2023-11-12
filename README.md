@@ -99,7 +99,11 @@ The patient table contains the information necessary to identify the user and hi
 The table of doctors contains information about the state in which the doctor is at the moment of the last iteration of the simulator operation. It reflects the current workload, the list of patients waiting for a decision and the history of visits of this doctor.
 
 <div align="center">
-  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Physicians_table.png"/>
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Physicians_table_1.svg"/>
+</div>
+
+<div align="center">
+  <img src="https://github.com/artemisak/RTX-BDI-MAS-Simulator/blob/main/Supplements/Physicians_table_2.svg"/>
 </div>
 
 The interns table reflects only the visible and measurable attributes of this type of agent. Implicit attributes, remain hidden.
