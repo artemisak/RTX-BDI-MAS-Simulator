@@ -344,11 +344,61 @@ class Intern(BaseAgent):
         self._efficiency = 0.5
 ```
 
-Instances of the ```Physician``` class use the ```generate_outcome(self, task)``` method of the assisting instances of the ```Intern``` class to produce a simulation of the result of MRI image markup. The result can be either satisfactory, in which case the doctor spends some extra time analyzing the image, or unsatisfactory, in which case the doctor still spends some time analyzing the image and then sends the job for redoing. The intern's work is not considered complete until a senior physician accepts it (hierarchical criterion).
+Instances of the ```Physician``` class use the ```generate_outcome(self, task)``` method of the assisting instances of the ```Intern``` class to produce a simulation of the result of MRI image markup. The result can be either satisfactory, in which case the doctor spends some extra time analyzing the image, or unsatisfactory, in which case the doctor still spends some time analyzing the image and then sends the job for redoing. In either case, the result is written to history, forming an array of ```outcomes```. The intern's work is not considered complete until a senior physician accepts it (hierarchical criterion).
 
 The ```Intern``` class has several computational properties:
- - ```efficiency``` returns the absolute efficiency of the intern;
- - ```successes``` returns the number of tasks successfully solved by the intern;
- - ```attempts``` - returns the number of all attempts made.
+ - ```efficiency``` - returns the absolute efficiency of the intern;
+ - ```successes``` - returns the number of tasks successfully solved by the intern;
+ - ```attempts``` - returns the number of all attempts made (length of ```outcomes```).
 
-Knowing successes and attempts one can calculate the relative efficiency of the intern in narrow profile tasks, such as abdominal or musculoskeletal radiology.
+Knowing successes and attempts one can calculate the relative efficiency of the intern in narrow profile tasks, such as abdominal or musculoskeletal radiology. At the moment of cold start, the efficiency of each intern in the network equates to 0.5.
+
+In addition to explicitly defined attributes, each intern is characterized by a set of impicit parameters, such as ```success_rate``` - a real chance of successfully completing the task depending on the quality of training, ```mean_time``` and ```deviation``` - average time to complete the task and spread.
+
+<h3>Field Types</h3>
+
+| Field | Type |
+|-------|------|
+|```success_rate```|```Double```|
+|```mean_time```|```Int```|
+|```deviation```|```Double```|
+|```outcomes```|```[Result]```|
+|```attempts```|```Int```|
+|```successes```|```Int```|
+|```efficiency```|```Double```|
+
+<h3>Method Types</h3>
+
+<table>
+  <thead>
+    <th>Method</th>
+    <th>Input</th>
+    <th>Output</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>init()</code>
+      </td>
+      <td align="center">
+        -
+      </td>
+      <td>
+        <code>Intern</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>generate_outcome()</code>
+      </td>
+      <td>
+        <code>task</code> : <code>Task</code>
+      </td>
+      <td>
+        <code>Result</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
