@@ -5,7 +5,7 @@
 </div>
 
 
-<h1>Table of contents<h1>
+<h1>Table of contents</h1>
 
  - [Installation](#installation)
  - [Usage](#usage)
@@ -124,7 +124,6 @@ The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic di
 [![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=%white)](https://scipy.org/)
 
 </div>
-
 <div align="center">
  
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
