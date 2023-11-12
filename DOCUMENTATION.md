@@ -14,7 +14,6 @@
   - [Supplements](#supplements)
     - [Task](#task)
     - [Result](#result)
-  - [Simulator](#simulator)
   
 <h1>Agents</h1>
 
@@ -484,5 +483,3 @@ Note that here and everywhere time is estimated in minutes, however, for real-ti
     </tr>
   </tbody>
 </table>
-
-<h1>Simulator</h1>
