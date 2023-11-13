@@ -2,9 +2,7 @@ import threading
 import configparser
 import time
 from datetime import timedelta
-
 import numpy as np
-
 from supplements import Result, Task
 
 config = configparser.ConfigParser()

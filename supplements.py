@@ -9,5 +9,5 @@ class Result:
 
 class Task:
     def __init__(self):
-        self.urgency = np.random.choice([1, 2, 3], p=[0.6, 0.3, 0.1])
-        self.intricate = np.random.choice([True, False], p=[0.3, 0.7])
+        self.urgency = np.random.choice([1, 2, 3], p=[.6, .3, .1])
+        self.intricate = np.random.choice([True, False], p=[.3, .7])

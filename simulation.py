@@ -1,9 +1,7 @@
 import json
 import time
 from datetime import datetime, timedelta
-
 import numpy as np
-
 from agents import Patient, Physician, Intern
 
 
@@ -52,7 +50,10 @@ class Simulator:
                 with open('Results/physician.json', 'w') as file1:
                     physicians_data = []
                     for physician in self.physicians:
-                        print(f"{physician.id}, {physician.role}, {physician.name}, {physician.qualification}, {physician.workload}, {[{i.id: i.name} for i in physician.pipeline]}, {[{i.id: i.name} for i in physician.completed]}\n")
+                        print(f"""{physician.id}, {physician.role}, {physician.name}, {physician.qualification},
+                              {physician.workload}, {[{i.id: i.name} for i in physician.pipeline]},
+                              {[{i.id: i.name} for i in physician.completed]}\n
+                              """)
                         physician_data = {
                             "id": physician.id,
                             "role": physician.role,
@@ -69,7 +70,10 @@ class Simulator:
                 with open('Results/patient.json', 'w') as file2:
                     patients_data = []
                     for patient in self.patients:
-                        print(f"{patient.id}, {patient.role}, {patient.name}, {patient.physician.id}, {patient.task.urgency}, {patient.task.intricate}, {patient.income_time}, {patient.resume_time}\n")
+                        print(f"""{patient.id}, {patient.role}, {patient.name}, {patient.physician.id},
+                                  {patient.task.urgency}, {patient.task.intricate}, {patient.income_time},
+                                  {patient.resume_time}\n
+                               """)
                         patient_data = {
                             "id": patient.id,
                             "role": patient.role,
