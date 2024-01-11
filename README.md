@@ -61,7 +61,7 @@ The proposed block diagram of RTX-BDI-MAS operation in the form of an acyclic di
 
 <h2>Technical means</h2>
 
-A tiny Node.js web application with Express.js Server-Sent Events (SSE) support was developed to visualize the results of the simulation scenario execution in Python (Numpy + Scipy).
+A tiny Node.js web application with Express.js Server-Sent Events (SSE) support was developed to visualize the results of the simulation scenario execution in Python (Numpy + Scipy). Minimum computer specifications include having Python3, at least 4GB of RAM, and a processor clocked at least 1.8GHz.
 
 <h2>Installation and Usage</h2>
 
