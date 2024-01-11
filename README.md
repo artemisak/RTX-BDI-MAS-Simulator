@@ -16,11 +16,18 @@
 
 <h1>Table of contents</h1>
 
- - [Installation](#installation)
- - [Usage](#usage)
- - [Caution](#caution)
+ - [Installation](#general-information)
+   - [Functional purpose](#functional-purpose)
+   - [Description of logical structure](#description-of-logical-structure)
+   - [Technical means](#technical-means)
+   - [Installation and Usage](#installation-and-usage)
+     - [Installation](#installation)
+     - [Usage](#usage)
+   - [Input data](#input-data)
+   - [Output data](#output-data)
  - [Documentation](#documentation)
- - [Theoretical basis](#theoretical-basis)
+ - [Caution](#caution)
+
 
 
 <h1>General information</h1>
